@@ -1,12 +1,8 @@
 // TO DO LIST:
-// 1-Figure out how to combine files (grunt) and load into Canvas
+// 1) Figure out how to combine files (grunt) and load into Canvas
 // 2) Check that next btn is working
 // 3) Make a list of each module that still needs edits + what those edits are
-
-
-
-
-
+var btn = document.createElement("BUTTON");
 
   // Because of a race condition with Canvas, check for the next button about 5 times to hide it.
   function hideNext(checkCurr) {
@@ -27,21 +23,21 @@
     // alert('Success!')
     // $nextButton.show();
     console.log("allowNext was called")
+	alert("Next button triggered");
   }
-
 
   //NIGHT OUT SCRIPT
 
   if ($('#Sel').length) {
     console.log("Sel exists");
     var colors = [
-      'blue',
-      'blue-light',
-      'green',
-      'rose',
+      'papaya',
+      'mustard',
+      'blush',
+      'aqua',
       'teal-dark',
-      'white-blue',
-      'tan',
+      'forest',
+      'eggplant',
       'pumpkin-dark'
     ];
     // Hide the next button
@@ -68,7 +64,7 @@
     });
 
     // Shift position slightly and change color of each item
-    $('.draggable').each(function(one, two) {
+    $('.words').each(function(one, two) {
       var xChange = Math.random() * 12;
       var yChange = -(Math.random() * 12);
 
@@ -85,7 +81,7 @@
 
 
 function check() {
-if ($('#Sel').children().length >= 3) {
+if ($('#Sel').children().length >= 4) {
    	console.log("made it to ifdraggablechildren");
     // Specific for Night Out #2
     if ($('#alc-learn--night-out__slide-two').length > 0) {
