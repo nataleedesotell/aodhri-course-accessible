@@ -1,29 +1,28 @@
-// TO DO LIST:
-// 1) Figure out how to combine files (grunt) and load into Canvas
-// 2) Check that next btn is working
-// 3) Make a list of each module that still needs edits + what those edits are
 var btn = document.createElement("BUTTON");
+var $nextButton = {};
+$nextButton = $('.module-sequence-footer-button--next');
+var checksMax = 5;
+
 
   // Because of a race condition with Canvas, check for the next button about 5 times to hide it.
   function hideNext(checkCurr) {
-    // console.log('Checked for the next button ' + checkCurr + ' times.');
-    // $nextButton = $('.module-sequence-footer-button--next');
-    // $nextButton.hide();
+    console.log('Checked for the next button ' + checkCurr + ' times.');
+    $nextButton = $('.module-sequence-footer-button--next');
+    $nextButton.hide();
 
-    // if ($nextButton.length < 1 && checkCurr < checksMax) {
-    //   setTimeout(function () {
-    //     hideNext(checkCurr + 1);
-    //   }, 100);
-    // }
+    if ($nextButton.length < 1 && checkCurr < checksMax) {
+      setTimeout(function () {
+        hideNext(checkCurr + 1);
+      }, 100);
+    }
 
     console.log("hideNext was called")
   }
 
   function allowNext() {
-    // alert('Success!')
-    // $nextButton.show();
+    $nextButton.show();
     console.log("allowNext was called")
-	alert("Next button triggered");
+	// alert("Next button triggered");
   }
 
   //NIGHT OUT SCRIPT
@@ -76,6 +75,11 @@ var btn = document.createElement("BUTTON");
   }
 
 
+
+if ($('#demo-1').length) {
+	console.log("lol");
+
+};
 
 //OUTSIDE A FUNCTION - why isn't this being called?
 
@@ -523,7 +527,7 @@ function init ()
           // Populate reponse options
           dialogue[currLine].answers.forEach(function(answer) {
             $answersDialogue
-            .append('<div class="dialogue-option talk-bubble tri-right border round btm-right-in ' + colorSchemes.splice(Math.random() * colorSchemes.length, 1) + '" data-next_label=' + answer.next + '><p>' + answer.m + '</p><div class="yoac-choose"> < </div></div>')
+            .append('<div tabindex="1" class="dialogue-option talk-bubble tri-right border round btm-right-in ' + colorSchemes.splice(Math.random() * colorSchemes.length, 1) + '" data-next_label=' + answer.next + '><p>' + answer.m + '</p><div tabindex="2" class="yoac-choose"> < </div></div>')
           })
 
           // Fade reponse options in
@@ -552,7 +556,7 @@ function init ()
     var currLine = 0;
 
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-    $answersDialogue.on('click', '.dialogue-option', function() {
+    $answersDialogue.on('click keypress', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
       $(this)
