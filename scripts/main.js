@@ -22,7 +22,7 @@ var checksMax = 5;
   function allowNext() {
     $nextButton.show();
     console.log("allowNext was called")
-	// alert("Next button triggered");
+	alert("Next button triggered");
   }
 
   //NIGHT OUT SCRIPT
@@ -592,7 +592,7 @@ $answersDialogue.on('click keypress', '.dialogue-option', function() {
 
 //DUPLICATE CODE FROM ABOVE, BUT WITH KEYPRESS
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-$answersDialogue.on('keypress', '.dialogue-option', function() {
+$answersDialogue.on('keypress click', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
       console.log("keyz");
