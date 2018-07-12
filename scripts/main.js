@@ -555,8 +555,9 @@ function init ()
     var delayTime = 400;
     var currLine = 0;
 
+function workForClicksAndKeys() {
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-    $answersDialogue.on('click', '.dialogue-option', function() {
+$answersDialogue.on('click keypress', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
       console.log("click it or ticket");
@@ -586,11 +587,12 @@ function init ()
       });
 
     })
+}
 
 
 //DUPLICATE CODE FROM ABOVE, BUT WITH KEYPRESS
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-    $answersDialogue.on('keypress', '.dialogue-option', function() {
+$answersDialogue.on('keypress', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
       console.log("keyz");
@@ -602,10 +604,8 @@ function init ()
         queue: false
       }).promise().done(function () {
         // Need promise so that callback only fires once https://stackoverflow.com/questions/8793246/jquery-animate-multiple-elements-but-only-fire-callback-once
-
         // Remove talk bubbles that were not selected from DOM
         $(this).remove()
-
         // If there's a specific response to the given answer, find it in dialogue array and update currLine to match
         if (nextLabel) {
           for (var line in dialogue) {
@@ -620,17 +620,11 @@ function init ()
       });
 
     })
-
-
-
     stepForward(currLine);
   }
 
-
   // Dialogue 1 Script
-  // if this id exists...
   if ($('#alc-learn--dialogue__slide-one').length) {
-    // then, run dialogue
     runDialogue([
       {
         prompt: 'Hey I’m tired AF. Wanna head back to our suite?',
