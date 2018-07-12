@@ -13,10 +13,12 @@ module.exports = function(grunt) {
       dist: {
         src: [
           'scripts/vendor/jquery-3.3.1.min.js',
-          'scripts/vendor/jquery-sortable-min.js',
+          // 'scripts/vendor/jquery-sortable-min.js',
           'scripts/vendor/dragula.min.js',
-          'scripts/vendor/dragon-drop.js',
-          'scripts/aodhri-course-accessible.js'
+          'scripts/main.js'
+
+          // 'scripts/vendor/dragon-drop.js'
+          // 'dragondrop.js'
 
 
         ],

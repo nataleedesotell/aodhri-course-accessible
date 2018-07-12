@@ -22,7 +22,7 @@ var checksMax = 5;
   function allowNext() {
     $nextButton.show();
     console.log("allowNext was called")
-	alert("Next button triggered");
+	// alert("Next button triggered");
   }
 
   //NIGHT OUT SCRIPT
@@ -555,12 +555,10 @@ function init ()
     var delayTime = 400;
     var currLine = 0;
 
-function workForClicksAndKeys() {
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-$answersDialogue.on('click keypress', '.dialogue-option', function() {
+$answersDialogue.on('click', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
-      console.log("click it or ticket");
       $(this)
       .addClass('yoac__selected')
       .siblings()
@@ -587,15 +585,13 @@ $answersDialogue.on('click keypress', '.dialogue-option', function() {
       });
 
     })
-}
 
 
 //DUPLICATE CODE FROM ABOVE, BUT WITH KEYPRESS
     // When user clicks on an answer, set currLine according to 'next' field, or just bump it otherwise
-$answersDialogue.on('keypress click', '.dialogue-option', function() {
+$answersDialogue.on('keypress', '.dialogue-option', function() {
       var nextLabel = $(this).data().next_label;
       // Fade out dialogue that user has not selected
-      console.log("keyz");
       $(this)
       .addClass('yoac__selected')
       .siblings()
@@ -812,42 +808,42 @@ $answersDialogue.on('keypress click', '.dialogue-option', function() {
     ])
   }
 
-    // Reorder script
-  if ($('#alc-learn--reorder').length) {
-    // Hide the next button
-    hideNext(0);
+  //   // Reorder script
+  // if ($('#alc-learn--reorder').length) {
+  //   // Hide the next button
+  //   hideNext(0);
 
-    $successMessage = $('#alc-learn--reorder__success');
+  //   $successMessage = $('#alc-learn--reorder__success');
 
-    // Make the elements draggable
-    var drake = dragula([document.getElementById('alc-learn--reorder__list')]);
+  //   // Make the elements draggable
+  //   var drake = dragula([document.getElementById('alc-learn--reorder__list')]);
 
-    // On every drop, check for correct order, if good, allowNext
-    drake.on('drop', function(el, target, source, sibling) {
-      var listItems = $('#alc-learn--reorder__list').children();
-      var currOrder = [];
+  //   // On every drop, check for correct order, if good, allowNext
+  //   drake.on('drop', function(el, target, source, sibling) {
+  //     var listItems = $('#alc-learn--reorder__list').children();
+  //     var currOrder = [];
 
-      for (var i = 0; i < listItems.length; i++) {
-        currOrder.push($(listItems[i]).data().order);
-      }
+  //     for (var i = 0; i < listItems.length; i++) {
+  //       currOrder.push($(listItems[i]).data().order);
+  //     }
 
-      if (currOrder.toString() === currOrder.slice(0).sort().toString()) {
-        $successMessage.fadeIn(allowNext)
-      }
-    });
-  }
+  //     if (currOrder.toString() === currOrder.slice(0).sort().toString()) {
+  //       $successMessage.fadeIn(allowNext)
+  //     }
+  //   });
+  // }
 
-  if ($('#card').length) {
-  	$("#card").flip();
-  	$("#card2").flip();
-   	$("#card3").flip();
-    $("#card4").flip();
+//   if ($('#card').length) {
+//   	$("#card").flip();
+//   	$("#card2").flip();
+//    	$("#card3").flip();
+//     $("#card4").flip();
 
-}
+// }
 
-$("#card4").click(function() {
-  allowNext();
-});
+// $("#card4").click(function() {
+//   allowNext();
+// });
 
 hideNext();
 // numberOfDivs();
